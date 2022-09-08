@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:padding="@dimen/list_item_padding"
+    tools:ignore="UnusedAttribute">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/list_item_image_width"
+        android:layout_height="@dimen/list_item_image_height"
+        android:scaleType="centerCrop"
+        android:transitionName="photo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/animal_name"
+        style="@style/NameTextView"
+        android:layout_width="@dimen/list_item_name_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/list_item_name_margin_start"
+        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/animal_type"
+        style="@style/TypeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/list_item_type_margin_start"
+        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintTop_toBottomOf="@+id/animal_name" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
