@@ -46,7 +46,7 @@ class AnimalListViewModelTest {
 
             val dispatcher = UnconfinedTestDispatcher(testScheduler)
             val results = mutableListOf<AnimalModel>()
-            val job = launch(dispatcher) { viewModel.resultFlow.toList(results) }
+            val job = launch(dispatcher) { viewModel._resultFlow.toList(results) }
 
             viewModel.getAnimalList()
             runCurrent()

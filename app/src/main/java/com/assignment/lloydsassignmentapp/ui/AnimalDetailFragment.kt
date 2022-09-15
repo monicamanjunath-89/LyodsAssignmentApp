@@ -1,22 +1,24 @@
 package com.assignment.lloydsassignmentapp.ui
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.assignment.domain.models.AnimalModel
-import com.assignment.lloydsassignmentapp.base.BaseFragment
 import com.assignment.lloydsassignmentapp.common.Constants
 import com.assignment.lloydsassignmentapp.databinding.AnimalDetailFragmentBinding
-import com.assignment.lloydsassignmentapp.viewmodel.AnimalDetailViewModel
 import com.bumptech.glide.Glide
 
-class AnimalDetailFragment : BaseFragment<AnimalDetailViewModel, AnimalDetailFragmentBinding>() {
+class AnimalDetailFragment : Fragment() {
 
-    override val viewmodel: AnimalDetailViewModel
-        get() = ViewModelProvider(this)[AnimalDetailViewModel::class.java]
+    private lateinit var viewBinding: AnimalDetailFragmentBinding
 
-    override fun getViewBinding(): AnimalDetailFragmentBinding =
-        AnimalDetailFragmentBinding.inflate(layoutInflater)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        viewBinding = AnimalDetailFragmentBinding.inflate(layoutInflater)
+        return viewBinding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,19 +30,21 @@ class AnimalDetailFragment : BaseFragment<AnimalDetailViewModel, AnimalDetailFra
      * Method to add data to UI
      */
     private fun initUi(animalData: AnimalModel) {
-        binding.name.text = animalData.name
-        binding.latinName.text = animalData.latin_name
-        binding.type.text = animalData.animal_type
-        binding.diet.text = animalData.diet
-        binding.geoRange.text = animalData.geo_range
-        binding.habitat.text = animalData.habitat
-        binding.lengthMin.text = animalData.length_min.toString()
-        binding.lengthMax.text = animalData.length_max.toString()
-        binding.weightMin.text = animalData.weight_min.toString()
-        binding.weightMax.text = animalData.weight_max.toString()
-        binding.lifespan.text = animalData.lifespan.toString()
-        Glide.with(binding.image.context)
-            .load(animalData.image_link) // image url
-            .into(binding.image)
+        viewBinding.apply {
+            name.text = animalData.name
+            latinName.text = animalData.latinName
+            type.text = animalData.animalType
+            diet.text = animalData.diet
+            geoRange.text = animalData.geoRange
+            habitat.text = animalData.habitat
+            lengthMin.text = animalData.lengthMin.toString()
+            lengthMax.text = animalData.lengthMax.toString()
+            weightMin.text = animalData.weightMin.toString()
+            weightMax.text = animalData.weightMax.toString()
+            lifespan.text = animalData.lifespan.toString()
+            Glide.with(image.context)
+                .load(animalData.imageLink) // image url
+                .into(image)
+        }
     }
 }

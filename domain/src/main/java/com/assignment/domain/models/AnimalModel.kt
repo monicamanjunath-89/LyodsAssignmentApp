@@ -1,22 +1,22 @@
 package com.assignment.domain.models
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class  AnimalModel(
     val name : String,
-    val latin_name : String,
-    val animal_type : String,
-    val active_time : String,
-    val length_min : Double,
-    val length_max : Double,
-    val weight_min : Double,
-    val weight_max : Double,
+    val latinName : String,
+    val animalType : String,
+    val activeTime : String,
+    val lengthMin : Double,
+    val lengthMax : Double,
+    val weightMin : Double,
+    val weightMax : Double,
     val lifespan : Int,
     val habitat : String,
     val diet : String,
-    val geo_range : String,
-    val image_link : String,
+    val geoRange : String,
+    val imageLink : String,
     val id : Int
 ) : Parcelable

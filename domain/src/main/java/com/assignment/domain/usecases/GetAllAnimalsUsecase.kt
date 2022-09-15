@@ -18,6 +18,8 @@ class GetAllAnimalsUsecase @Inject constructor(
             emit(Resource.Success(animalList))
         } catch (e: IOException) {
             emit(Resource.Error("Couldn't reach server. Check your internet connection!"))
+        } catch (e: Exception) {
+            emit(Resource.Error("ERROR: " +e.message))
         }
     }
 }

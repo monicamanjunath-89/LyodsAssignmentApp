@@ -7,13 +7,13 @@ import com.assignment.domain.models.AnimalModel
 import com.assignment.domain.usecases.GetAllAnimalsUsecase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class AnimalListViewModel @Inject constructor(private val getAllAnimalsUsecase: GetAllAnimalsUsecase) :
     ViewModel() {
-    val resultFlow = MutableStateFlow<Resource<List<AnimalModel>>>(Resource.Loading())
+    val _resultFlow = MutableStateFlow<Resource<List<AnimalModel>>>(Resource.Loading())
+    val resultFlow = _resultFlow.asStateFlow()
 
     init {
         getAnimalList()
@@ -21,7 +21,7 @@ class AnimalListViewModel @Inject constructor(private val getAllAnimalsUsecase: 
 
     fun getAnimalList() {
        getAllAnimalsUsecase().onEach { result ->
-            resultFlow.value = result
+            _resultFlow.value = result
         }.launchIn(viewModelScope)
     }
 }
