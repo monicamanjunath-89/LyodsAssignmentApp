@@ -30,7 +30,7 @@ class AnimalDetailFragment : Fragment() {
      * Method to add data to UI
      */
     private fun initUi(animalData: AnimalModel) {
-        viewBinding.apply {
+        with(viewBinding) {
             name.text = animalData.name
             latinName.text = animalData.latinName
             type.text = animalData.animalType

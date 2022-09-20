@@ -33,7 +33,7 @@ class AnimalListFragment : BaseFragment<AnimalListViewModel, AnimalListFragmentB
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.apply {  animallist.layoutManager = LinearLayoutManager(context)}
+        with(binding) {  animallist.layoutManager = LinearLayoutManager(context)}
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -52,7 +52,7 @@ class AnimalListFragment : BaseFragment<AnimalListViewModel, AnimalListFragmentB
             is Resource.Success -> {
                 result.data?.let {
                     val adapter = AnimalListAdapter(this, it)
-                    binding.apply {
+                    with(binding) {
                         animallist.adapter = adapter
                         progressBar.visibility = View.GONE
                         errorText.visibility = View.GONE
@@ -62,7 +62,7 @@ class AnimalListFragment : BaseFragment<AnimalListViewModel, AnimalListFragmentB
                 }
             }
             is Resource.Error -> {
-                binding.apply {
+                with(binding) {
                     progressBar.visibility = View.GONE
                     errorText.visibility = View.VISIBLE
                     errorText.text = result.message
@@ -70,7 +70,7 @@ class AnimalListFragment : BaseFragment<AnimalListViewModel, AnimalListFragmentB
                 }
             }
             is Resource.Loading -> {
-                binding.apply {
+                with(binding) {
                     progressBar.visibility = View.VISIBLE
                     errorText.visibility = View.GONE
                     animallist.visibility = View.GONE

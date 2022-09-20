@@ -1,5 +1,7 @@
 package com.assignment.domain.models
 
+import java.io.Serializable
+
 data class  AnimalModel(
     val name : String,
     val latinName : String,
@@ -15,4 +17,4 @@ data class  AnimalModel(
     val geoRange : String,
     val imageLink : String,
     val id : Int
-)
+):Serializable
