@@ -1,9 +1,5 @@
 package com.assignment.domain.models
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-
-@Parcelize
 data class  AnimalModel(
     val name : String,
     val latinName : String,
@@ -19,4 +15,4 @@ data class  AnimalModel(
     val geoRange : String,
     val imageLink : String,
     val id : Int
-) : Parcelable
+)
