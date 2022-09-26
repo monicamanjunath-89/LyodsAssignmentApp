@@ -2,10 +2,9 @@ package com.assignment.lloydsassignmentapp.ui
 
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.VisibleForTesting
 import androidx.core.os.bundleOf
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
@@ -19,14 +18,13 @@ import com.assignment.lloydsassignmentapp.common.ListItemClickListener
 import com.assignment.lloydsassignmentapp.common.Constants.ANIMAL_SELECTED
 import com.assignment.lloydsassignmentapp.databinding.AnimalListFragmentBinding
 import com.assignment.lloydsassignmentapp.viewmodel.AnimalListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class AnimalListFragment : BaseFragment<AnimalListViewModel, AnimalListFragmentBinding>(),
     ListItemClickListener {
-    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-    override val viewmodel: AnimalListViewModel
-        get() = ViewModelProvider(requireActivity())[AnimalListViewModel::class.java]
+    override val viewmodel: AnimalListViewModel by activityViewModels()
 
     override fun getViewBinding(): AnimalListFragmentBinding =
         AnimalListFragmentBinding.inflate(layoutInflater)
@@ -79,7 +77,7 @@ class AnimalListFragment : BaseFragment<AnimalListViewModel, AnimalListFragmentB
         }
     }
 
-    override fun onListItemClickListener(item: AnimalModel) {
+    override fun onListItemClickListener(item: Int) {
         val bundle = bundleOf(ANIMAL_SELECTED to item)
         findNavController().navigate(R.id.action_AnimalListFragment_to_AnimalDetailFragment, bundle)
     }

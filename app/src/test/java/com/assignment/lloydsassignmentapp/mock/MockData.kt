@@ -60,5 +60,9 @@ object MockData {
     fun getAnimalList(): Flow<Resource<List<AnimalModel>>> = flow {
         emit(Resource.Success(animals))
     }
+
+    fun getAnimalDetail(item: Int): Flow<Resource<AnimalModel>> = flow {
+        emit(Resource.Success(animals.get(item)))
+    }
 }
 

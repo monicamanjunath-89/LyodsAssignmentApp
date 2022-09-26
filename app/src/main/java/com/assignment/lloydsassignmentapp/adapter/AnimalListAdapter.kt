@@ -17,7 +17,7 @@ class AnimalListAdapter(private val onClickListener: ListItemClickListener, priv
 
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.list_item.setOnClickListener{onClickListener.onListItemClickListener(mList[position])}
+        holder.list_item.setOnClickListener{onClickListener.onListItemClickListener(position)}
         val item = mList[position]
 
         // sets the text and image to the textview and imageview from our ViewHolder class

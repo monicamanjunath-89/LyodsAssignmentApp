@@ -33,7 +33,7 @@ class AnimalListFragmentTest {
 
     private lateinit var scenario: FragmentScenario<AnimalListFragment>
 
-    /*@Before
+    @Before
     fun setup() {
         val fragmentArgs = bundleOf("selecteditem" to 0)
         scenario = launchFragmentInContainer<AnimalListFragment>(fragmentArgs)
@@ -44,6 +44,6 @@ class AnimalListFragmentTest {
     fun testRecyclerView() {
         onView(withId(R.id.animallist)).check(matches(not(isDisplayed())))
     }
-*/
+
 
 }

@@ -15,7 +15,17 @@ class AnimalRepoImpl @Inject constructor(
     private val apiService: ApiService
 ): AnimalRepository{
 
+    lateinit var animalList : List<AnimalModel>
+
     override suspend fun getAllAnimals(): List<AnimalModel> {
-        return apiService.getAnimals().map { it.toAnimalList() }
+        animalList = apiService.getAnimals().map {
+            it.toAnimalList() }
+        return animalList
     }
+
+    override suspend fun getAnimalDetail(selectedItem : Int): AnimalModel {
+        return animalList.get(selectedItem)
+    }
+
+
 }

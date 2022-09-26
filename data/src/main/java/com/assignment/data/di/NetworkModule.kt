@@ -1,9 +1,7 @@
 package com.assignment.data.di
 
 import com.assignment.data.apiservice.ApiService
-import com.assignment.data.repo.AnimalRepoImpl
 import com.assignment.domain.common.Constants.BASE_URL
-import com.assignment.domain.repositories.AnimalRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,11 +23,4 @@ class NetworkModule{
             .build()
             .create(ApiService::class.java)
     }
-
-    @Provides
-    @Singleton
-    fun provideAnimalRepository(api: ApiService): AnimalRepository {
-        return AnimalRepoImpl(api)
-    }
-
 }
